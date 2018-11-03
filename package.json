@@ -1,0 +1,57 @@
+{
+  "name": "insta-learn",
+  "description": "Learn a new language from your social media with the power of machine learning and your friends' selfies.",
+  "version": "0.0.1",
+  "author": [
+    "Ryan Wiemer",
+    "Kyle Smith",
+    "Robert Wolf",
+    "Anil Kumar Nandamuri"
+  ],
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.8.0",
+    "gatsby": "^2.0.38",
+    "gatsby-image": "^2.0.19",
+    "gatsby-plugin-manifest": "^2.0.7",
+    "gatsby-plugin-netlify": "^2.0.3",
+    "gatsby-plugin-offline": "^2.0.11",
+    "gatsby-plugin-react-helmet": "^3.0.1",
+    "gatsby-plugin-sharp": "^2.0.11",
+    "gatsby-plugin-styled-components": "^3.0.1",
+    "gatsby-source-filesystem": "^2.0.7",
+    "gatsby-transformer-sharp": "^2.1.7",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-helmet": "^5.2.0",
+    "styled-components": "^4.0.3"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "test": "npm run lint:css && npm run lint:js && npm run check-pretty",
+    "dev": "gatsby develop",
+    "lint:js": "eslint --ext .js,.jsx .",
+    "lint:css": "stylelint 'src/**/*.js'",
+    "check-pretty": "prettier -l {,src/**/}*.{js,jsx,json,css,scss}",
+    "format": "prettier --write \"src/**/*.js\"",
+    "clean": "rm -rf public .cache"
+  },
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-gatsby-standard": "^2.1.0",
+    "prettier": "^1.14.3",
+    "stylelint": "^9.7.1",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  }
+}
