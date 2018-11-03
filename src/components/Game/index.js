@@ -12,7 +12,7 @@ class Index extends React.Component {
     currView: 'lottery',
 
     currWord: '', 
-    currResult: '',
+    currResult: 'success',
 
     round: 1,
     score: 0,
@@ -24,16 +24,31 @@ class Index extends React.Component {
     })
   }
 
-  updateWord() {
+  handleLottery() {
+
     this.setState({
       currWord: '',
     })
+
+    this.updateView('test');
   }
 
-  updateResult() {
+  handleTest() {
+
     this.setState({
       currResult: '',
     })
+
+    this.updateView('result');
+  }
+
+  handleResult() {
+
+    this.setState({
+      currRound: this.state.round,
+    })
+
+    this.updateView('lottery');
   }
 
   render() {
@@ -42,7 +57,7 @@ class Index extends React.Component {
       <div>
 
         {this.state.currView === 'lottery' &&
-          <Lottery />
+          <Lottery result={this.state.currResult} handleLottery={this.handleLottery} />
         }
 
         {this.state.currView === 'test' &&
