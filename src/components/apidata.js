@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Clarifai from 'clarifai'
 import Instagram from 'node-instagram'
-import Constants from '../common/constants'
+// import Constants from '../common/constants'
 
 const app = new Clarifai.App({
   apiKey: 'd63bab0d77c248f1bcb5304ff8d86cf4',
@@ -9,10 +9,10 @@ const app = new Clarifai.App({
 
 let DERIVED_ACCESS_TOKEN = ''
 
-const REDIRECT_URI = 'http://localhost:8000'
+/* const REDIRECT_URI = 'http://localhost:8000'
 const url = `https://api.instagram.com/oauth/authorize/?client_id=${
   Constants.CLIENT_ID
-}&redirect_uri=${REDIRECT_URI}&response_type=token`
+}&redirect_uri=${REDIRECT_URI}&response_type=token` */
 
 // Create a new instance.
 
