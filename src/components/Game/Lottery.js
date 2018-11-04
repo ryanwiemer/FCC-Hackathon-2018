@@ -1,9 +1,10 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const wordList = ['banana', 'apple', 'orange']
 
 let i = 0
-let word = ''
+let word = wordList[1]
 
 export default props => {
   const spin = setInterval(function() {
@@ -16,8 +17,13 @@ export default props => {
   setTimeout(function() {
     clearInterval(spin)
 
-    props.handleLottery()
+    props.handleLottery
   }, 3000)
 
-  return <>{word}</>
+  return <Word>{word}</Word>
 }
+
+const Word = styled.div`
+font-size: 2rem;
+text-align: center;
+`
