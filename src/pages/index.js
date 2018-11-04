@@ -24,6 +24,7 @@ class IndexPage extends React.Component {
       ],
       currentLanguage: '',
       currentPage: 'login',
+      instagramToken: '',
     }
   }
 
@@ -37,6 +38,7 @@ class IndexPage extends React.Component {
     // If authentication is successful
     this.setState({
       currentPage: 'game',
+      instagramToken: '',
     })
   }
 

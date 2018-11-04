@@ -16,14 +16,19 @@ const Container = styled.div`
   flex-flow: column;
   width: 100%;
   max-width: 500px;
-  border: 1px solid gray;
   border-radius: 3px;
   padding: 2em;
   margin: 0 auto;
 `
 
+const Row = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 const Title = styled.h1`
   font-size: 2em;
+  text-align: center;
   text-transform: capitalize;
   margin: 0 0 2rem 0;
 `
@@ -33,15 +38,14 @@ const Login = props => {
     <Wrapper>
       <Container>
         <Title>Please select a language</Title>
-        <div>
+        <Row>
           <Select
             languages={props.languages}
             handleChange={props.handleChange}
           />
           <Button handleSubmit={props.handleSubmit} />
-
           <button onClick={props.handleShare}>Skip to share view</button>
-        </div>
+        </Row>
       </Container>
     </Wrapper>
   )

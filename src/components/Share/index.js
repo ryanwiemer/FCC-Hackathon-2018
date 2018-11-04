@@ -10,7 +10,6 @@ const Wrapper = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background: ${props => props.theme.colors.tertiary};
   background: linear-gradient(
     135deg,
     rgba(203, 86, 245, 1) 0%,
