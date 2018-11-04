@@ -68,7 +68,7 @@ const Countdown = styled.div`
   font-weight: bold;
   top: 0.5rem;
   right: 0.5rem;
-  width: 60px;
+  width: 65px;
 `
 
 const Question = styled.p`
