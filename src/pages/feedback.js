@@ -2,10 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Layout from '../components/Layout'
+import SEO from '../components/SEO'
 
 const feedback = () => {
   return (
     <Layout>
+      <SEO title="feedback" />
       <Container>
         <h1>Give us feedback!</h1>
         <form action="https://formspree.io/wolfrob35@gmail.com" method="POST">
@@ -47,7 +49,7 @@ const Container = styled.div`
   }
 
   label {
-      display: block;
+    display: block;
     padding: 1rem 1rem 0;
   }
 
@@ -65,7 +67,7 @@ const Container = styled.div`
   input[type='submit'] {
     margin: 2rem auto;
     width: auto;
-    padding: .75rem 1rem;
+    padding: 0.75rem 1rem;
     font-weight: bold;
   }
 `
