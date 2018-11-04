@@ -8,7 +8,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.updateCount.bind(this), 200)
+    // this.interval = setInterval(this.updateCount.bind(this), 200)
   }
 
   updateCount() {
@@ -40,7 +40,7 @@ export default class extends React.Component {
               <img
                 onClick={() => this.props.handleTest('success', winScore)}
                 src={item.image}
-                key={item.word}
+                key={item.image}
                 alt={item.word}
               />
             ))}
@@ -53,7 +53,7 @@ export default class extends React.Component {
               <img
                 onClick={() => this.props.handleTest('fail', 0)}
                 src={item.image}
-                key={item.word}
+                key={item.image}
                 alt={item.word}
               />
             ))}

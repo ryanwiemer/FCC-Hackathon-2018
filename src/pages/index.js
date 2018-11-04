@@ -9,6 +9,7 @@ class IndexPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      data: {},
       languages: [
         {
           title: 'English',
@@ -25,7 +26,6 @@ class IndexPage extends React.Component {
       ],
       currentLanguage: '',
       currentPage: 'login',
-      instagramToken: '',
       finalScore: null,
     }
   }
@@ -36,22 +36,21 @@ class IndexPage extends React.Component {
     })
   }
 
-  handleSubmit = event => {
-    // If authentication is successful
-    this.setState({
-      currentPage: 'game',
-      instagramToken: '',
-    })
-  }
-
   handleRestart = event => {
     this.setState({
       currentPage: 'game',
     })
   }
 
-  receiveData = data => {
-    console.log(data)
+  receiveData = result => {
+
+    console.log(result)
+
+    this.setState({
+      data: result,
+      currentPage: 'game',
+    })
+
   }
 
   gameOver = score => {
@@ -71,12 +70,13 @@ class IndexPage extends React.Component {
               languages={this.state.languages}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
+              sendData={this.receiveData}
             />
-            <API />
+            {/* <API sendData={this.receiveData} /> */}
           </div>
         )}
 
-        {currentPage === 'game' && <Game gameOver={this.gameOver} />}
+        {currentPage === 'game' && <Game data={this.state.data} gameOver={this.gameOver} />}
 
         {currentPage === 'share' && (
           <Share

@@ -32,7 +32,7 @@ const maxRound = 4
 
 export default class extends React.Component {
   state = {
-    data: sample_data,
+    data: this.props.data,
 
     currView: 'lottery',
 

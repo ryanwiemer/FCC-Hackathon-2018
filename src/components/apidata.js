@@ -95,9 +95,9 @@ export default class ClarifaiData extends Component {
     return (
       <div>
         {/* <button onClick={this.getInstagramData}>Get Instagram Data</button> */}
-        <button onClick={this.getClarifaiData}>Get Clarifai Data</button>
-        <br />
-        <a href={url}>Get Instragram </a>
+        {/* <button onClick={this.getClarifaiData}>Get Clarifai Data</button> */}
+        {/* <br /> */}
+        {/* <a href={url}>Get Instragram </a> */}
         <button onClick={this.getInstagramToken}>Get Instragram Token</button>
       </div>
     )
