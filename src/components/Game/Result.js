@@ -46,7 +46,7 @@ export default class extends React.Component {
           <Heading>Correct, Great Job! 🎉</Heading>
         </View>
       )
-    } else if (props.result === 'fail') {
+    } else if (this.props.result === 'fail') {
       return (
         <View>
           <Heading>Sorry, Incorrect 😭</Heading>
