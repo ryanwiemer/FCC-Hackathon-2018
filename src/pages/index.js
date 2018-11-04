@@ -40,8 +40,13 @@ class IndexPage extends React.Component {
     })
   }
 
+  handleRestart = event => {
+    this.setState({
+      currentPage: 'login',
+    })
+  }
+
   handleShare = event => {
-    // If authentication is successful
     this.setState({
       currentPage: 'share',
     })
@@ -64,7 +69,9 @@ class IndexPage extends React.Component {
 
         {currentPage === 'game' && <Game />}
 
-        {currentPage === 'share' && <Share />}
+        {currentPage === 'share' && (
+          <Share handleRestart={this.handleRestart} />
+        )}
       </Layout>
     )
   }
