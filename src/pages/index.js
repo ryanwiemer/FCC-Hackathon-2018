@@ -49,12 +49,6 @@ class IndexPage extends React.Component {
     })
   }
 
-  handleShare = event => {
-    this.setState({
-      currentPage: 'share',
-    })
-  }
-
   gameOver = score => {
     this.setState({
       currentPage: 'share',
@@ -71,7 +65,6 @@ class IndexPage extends React.Component {
             languages={this.state.languages}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
-            handleShare={this.handleShare}
           />
         )}
 
