@@ -1,32 +1,48 @@
 import React from 'react'
 import styled from 'styled-components'
+import Word from '../../styles/Word'
 
-const wordList = ['banana', 'apple', 'orange']
+export default class extends React.Component {
 
-let i = 0
-let word = wordList[1]
+  state = {
+    list: ['banana', 'apple', 'orange'],
+    index: 0,
+  }
 
-export default props => {
-  const spin = setInterval(function() {
-    word = wordList[i]
+  componentDidMount() {
 
-    i = i + 1
-    if (i === wordList.length) i = 0
-  }, 150)
+    this.interval = setInterval(this.updateCount.bind(this), 150)
 
-  setTimeout(function() {
-    clearInterval(spin)
+  }
 
-    props.handleLottery
-  }, 3000)
+  updateCount() {
 
-  return <Word>{word}</Word>
+    this.setState({ index: this.state.index + 1 })
+
+    if (this.state.index === 10) {
+
+      const randomWord = this.state.list[Math.floor(Math.random()*this.state.list.length)]
+
+      this.props.handleLottery(randomWord)
+
+    }
+
+  }
+
+  componentWillUnmount() {
+
+    clearInterval(this.interval)
+
+  }
+
+  render() {
+  
+    const word = this.state.list[this.state.index % this.state.list.length]
+  
+    return (
+      <Word>{word}</Word>
+    )
+  }
+
 }
 
-
-
-
-const Word = styled.div`
-font-size: 2rem;
-text-align: center;
-`

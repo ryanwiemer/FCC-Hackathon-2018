@@ -3,79 +3,82 @@ import Bar from './Bar'
 import Lottery from './Lottery'
 import Test from './Test'
 import Result from './Result'
+import styled from 'styled-components'
 
 export default class extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: '', // here we will store images and words from Clarifai
 
-      currView: 'lottery',
+  state = {
+    data: '', // here we will store images and words from Clarifai
 
-      currWord: '',
-      currResult: 'success',
+    currView: 'lottery',
 
-      round: 1,
-      score: 0,
-    }
+    currWord: '', 
+    currResult: 'success',
+
+    round: 1,
+    score: 0,
   }
 
-  updateView() {
+  updateView(newView) {
     this.setState({
-      currView: '',
+      currView: newView
     })
   }
 
-  handleLottery() {
+  handleLottery(word) {
+
     this.setState({
-      currWord: '',
+      currWord: word,
     })
 
-    this.updateView('test')
+    this.updateView('test');
   }
 
   handleTest() {
+
     this.setState({
       currResult: '',
     })
 
     // add: update score
 
-    this.updateView('result')
+    this.updateView('result');
   }
 
   handleResult() {
+
     this.setState({
-      currRound: this.state.round,
+      currRound: this.state.round + 1,
     })
 
-    this.updateView('lottery')
+    // if (this.state.round === 20)
+
+    this.updateView('lottery');
   }
 
   render() {
+
     return (
-      <div>
-        {this.state.currView === 'lottery' && (
-          <Lottery data={this.state.data} handleLottery={this.handleLottery} />
-        )}
+      <Game>
 
-        {this.state.currView === 'test' && (
-          <Test
-            data={this.state.data}
-            word={this.state.currWord}
-            handleTest={this.handleTest}
-          />
-        )}
+        {this.state.currView === 'lottery' &&
+          <Lottery data={this.state.data} handleLottery={this.handleLottery.bind(this)} />
+        }
 
-        {this.state.currView === 'result' && (
-          <Result
-            result={this.state.currResult}
-            handleResult={this.handleResult}
-          />
-        )}
+        {this.state.currView === 'test' &&
+          <Test data={this.state.data} word={this.state.currWord} handleTest={this.handleTest} />
+        }
+
+        {this.state.currView === 'result' &&
+          <Result result={this.state.currResult} handleResult={this.handleResult} />
+        }
 
         <Bar round={this.state.round} score={this.state.score} />
-      </div>
+      </Game>
     )
   }
 }
+
+const Game = styled.div`
+height: 100vh;
+`

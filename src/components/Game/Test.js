@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Word from '../../styles/Word'
 
 export default props => {
 
@@ -15,10 +16,6 @@ export default props => {
 }
 
 const Question = styled.p`
-text-align: center;
-`
-
-const Word = styled.h1`
 text-align: center;
 `
 
