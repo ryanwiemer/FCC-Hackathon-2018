@@ -2,46 +2,69 @@ import React from 'react'
 import styled from 'styled-components'
 import Word from './Word'
 
-export default props => {
+export default class extends React.Component {
+  state = {
+    time: 6000,
+  }
 
-  setTimeout( // after 3s
-    function() {
-        props.handleTest('timesup'); // go to next round
+  componentDidMount() {
+    this.interval = setInterval(this.updateCount.bind(this), 200)
+  }
+
+  updateCount() {
+    this.setState({ time: this.state.time - 200 })
+
+    if (this.state.time <= 0) {
+      this.props.handleTest()
     }
-    .bind(this),
-    6000
-  );
+  }
 
-  return (
-    <div>
-      <Question>Where's</Question>
-      <Word>{props.word}</Word>
-      <Answers>
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
 
-        {/* correct answer */}
-        {props.data.filter(item => item.word === props.word).slice(0,1).map(item => (
-          <img
-            onClick={() => props.handleTest('success')}
-            src={item.image}
-            key={item.word}
-            alt={item.word}
-          />
-        ))}
+  render() {
+    return (
+      <div>
+        <Countdown>{this.state.time / 1000}</Countdown>
+        <Question>Where's</Question>
+        <Word>{this.props.word}</Word>
+        <Answers>
+          {/* correct answer */}
+          {this.props.data
+            .filter(item => item.word === this.props.word)
+            .slice(0, 1)
+            .map(item => (
+              <img
+                onClick={() => this.props.handleTest('success')}
+                src={item.image}
+                key={item.word}
+                alt={item.word}
+              />
+            ))}
 
-        {/* wrong answers */}
-        {props.data.filter(item => item.word !== props.word).slice(0,3).map(item => (
-          <img
-            onClick={() => props.handleTest('fail')}
-            src={item.image}
-            key={item.word}
-            alt={item.word}
-          />
-        ))}
-
+          {/* wrong answers */}
+          {this.props.data
+            .filter(item => item.word !== this.props.word)
+            .slice(0, 3)
+            .map(item => (
+              <img
+                onClick={() => this.props.handleTest('fail')}
+                src={item.image}
+                key={item.word}
+                alt={item.word}
+              />
+            ))}
         </Answers>
-    </div>
-  )
+      </div>
+    )
+  }
 }
+
+const Countdown = styled.div`
+position: absolute;
+top: 0;
+right: 0;`
 
 const Question = styled.p`
   text-align: center;
