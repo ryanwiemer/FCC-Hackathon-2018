@@ -8,6 +8,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({time: 6000})
     this.interval = setInterval(this.updateCount.bind(this), 200)
   }
 
@@ -24,6 +25,9 @@ export default class extends React.Component {
   }
 
   render() {
+
+    const winScore = 6 + Math.floor(this.state.time / 1000)
+
     return (
       <div>
         <Countdown>{this.state.time / 1000}</Countdown>
@@ -36,7 +40,7 @@ export default class extends React.Component {
             .slice(0, 1)
             .map(item => (
               <img
-                onClick={() => this.props.handleTest('success')}
+                onClick={() => this.props.handleTest('success', winScore)}
                 src={item.image}
                 key={item.word}
                 alt={item.word}
@@ -49,7 +53,7 @@ export default class extends React.Component {
             .slice(0, 3)
             .map(item => (
               <img
-                onClick={() => this.props.handleTest('fail')}
+                onClick={() => this.props.handleTest('fail', 0)}
                 src={item.image}
                 key={item.word}
                 alt={item.word}
