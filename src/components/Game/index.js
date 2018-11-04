@@ -70,11 +70,11 @@ export default class extends React.Component {
 
   handleResult() {
 
+    console.log('next round')
+
     this.setState({
       currRound: this.state.round + 1,
     })
-
-    // if (this.state.round === 20)
 
     this.updateView('lottery');
   }

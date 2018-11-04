@@ -3,7 +3,14 @@ import styled from 'styled-components'
 import Word from './Word'
 
 export default props => {
-  console.log(props.data)
+
+  setTimeout( // after 3s
+    function() {
+        props.handleTest('timesup'); // go to next round
+    }
+    .bind(this),
+    6000
+  );
 
   return (
     <div>

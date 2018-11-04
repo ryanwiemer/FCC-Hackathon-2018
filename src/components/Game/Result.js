@@ -5,7 +5,7 @@ export default props => {
 
   setTimeout( // after 3s
     function() {
-        this.props.handleResult(); // go to next round
+        props.handleResult(); // go to next round
     }
     .bind(this),
     3000
