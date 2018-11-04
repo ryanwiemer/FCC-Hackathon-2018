@@ -44,7 +44,7 @@ class IndexPage extends React.Component {
 
   handleRestart = event => {
     this.setState({
-      currentPage: 'login',
+      currentPage: 'game',
     })
   }
 
@@ -64,7 +64,6 @@ class IndexPage extends React.Component {
     const { currentPage } = this.state
     return (
       <Layout>
-
         {currentPage === 'login' && (
           <Login
             languages={this.state.languages}

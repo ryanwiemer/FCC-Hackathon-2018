@@ -8,7 +8,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({time: 6000})
+    this.setState({ time: 6000 })
     this.interval = setInterval(this.updateCount.bind(this), 200)
   }
 
@@ -16,7 +16,7 @@ export default class extends React.Component {
     this.setState({ time: this.state.time - 200 })
 
     if (this.state.time <= 0) {
-      this.props.handleTest()
+      this.props.handleTest('timesUp', 0)
     }
   }
 
@@ -25,7 +25,6 @@ export default class extends React.Component {
   }
 
   render() {
-
     const winScore = 6 + Math.floor(this.state.time / 1000)
 
     return (
@@ -66,9 +65,10 @@ export default class extends React.Component {
 }
 
 const Countdown = styled.div`
-position: absolute;
-top: 0;
-right: 0;`
+  position: absolute;
+  top: 0;
+  right: 0;
+`
 
 const Question = styled.p`
   text-align: center;
