@@ -5,7 +5,7 @@ import Word from './Word'
 export default class extends React.Component {
 
   state = {
-    list: ['banana', 'apple', 'orange'],
+    list: this.props.data.map(item => item.word),
     index: 0,
   }
 

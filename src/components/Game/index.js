@@ -5,12 +5,33 @@ import Test from './Test'
 import Result from './Result'
 import styled from 'styled-components'
 
-import sample_data from './sample_data'
+const sample_data = [
+  {
+    image:
+      'https://scontent.cdninstagram.com/vp/44c2861a181a144326c1fba200e97143/5C6E41FD/t51.2885-15/sh0.08/e35/s640x640/32698648_1779293725450764_884912783672475648_n.jpg',
+    word: 'el puente',
+  },
+  {
+    image:
+      'https://scontent.cdninstagram.com/vp/174d7acb41917b91356d7a65214af138/5BE1CBF8/t51.2885-15/e15/s640x640/19534027_106047860033756_8031250803824001024_n.jpg',
+    word: 'las montañas',
+  },
+  {
+    image:
+      'https://scontent.cdninstagram.com/vp/174d7acb41917b91356d7a65214af138/5BE1CBF8/t51.2885-15/e15/s640x640/19534027_106047860033756_8031250803824001024_n.jpg',
+    word: 'las cascadas',
+  },
+  {
+    image:
+      'https://scontent.cdninstagram.com/vp/f2ac3be7493abb84e45f0424b9f5d189/5BE18E75/t51.2885-15/e15/s640x640/17882576_1536220006449577_5865947293563224064_n.jpg',
+    word: 'el bosque',
+  },
+]
 
 export default class extends React.Component {
 
   state = {
-    data: sample_data, // here we will store images and words from Clarifai
+    data: sample_data,
 
     currView: 'lottery',
 
@@ -36,10 +57,10 @@ export default class extends React.Component {
     this.updateView('test');
   }
 
-  handleTest() {
+  handleTest(result) {
 
     this.setState({
-      currResult: '',
+      currResult: result,
     })
 
     // add: update score
@@ -59,8 +80,6 @@ export default class extends React.Component {
   }
 
   render() {
-
-    console.log(this.state.data)
 
     return (
       <Game>
