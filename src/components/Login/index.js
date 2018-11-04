@@ -34,12 +34,10 @@ export default class ClarifaiData extends React.Component {
       // var currentComb = {};
       // currentComb.url = urls[i];
       app.models.predict(Clarifai.GENERAL_MODEL, urls[i]).then(res => {
-        var word = JSON.stringify(
-          res['outputs'][0]['data']['concepts'][0]['name']
-        )
-        var image = JSON.stringify(
-          res['outputs'][0]['input']['data']['image']['url']
-        )
+        var word = res['outputs'][0]['data']['concepts'][0]['name']
+        
+        var image = res['outputs'][0]['input']['data']['image']['url']
+        
         var currentComb = {}
         currentComb.image = image
         currentComb.word = word
