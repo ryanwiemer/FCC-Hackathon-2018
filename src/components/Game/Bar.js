@@ -1,7 +1,17 @@
 import React from 'react'
+import styled from 'styled-components'
 
-const Bar = () => {
-  return <></>
+export default props => {
+  return <Bar>
+    <p>{props.round} / 20</p>
+    <p>💎 {props.score}</p>
+  </Bar>
 }
 
-export default Bar
+const Bar = styled.section`
+
+display: flex;
+justify-content: space-between;
+
+padding: .5rem;
+`

@@ -4,7 +4,7 @@ import Lottery from './Lottery'
 import Test from './Test'
 import Result from './Result'
 
-class Index extends React.Component {
+export default class extends React.Component {
 
   state = {
     data: '', // here we will store images and words from Clarifai
@@ -39,6 +39,8 @@ class Index extends React.Component {
       currResult: '',
     })
 
+    // add: update score
+
     this.updateView('result');
   }
 
@@ -57,19 +59,19 @@ class Index extends React.Component {
       <div>
 
         {this.state.currView === 'lottery' &&
-          <Lottery result={this.state.currResult} handleLottery={this.handleLottery} />
+          <Lottery data={this.state.data} handleLottery={this.handleLottery} />
         }
 
         {this.state.currView === 'test' &&
-          <Test />
+          <Test data={this.state.data} word={this.state.currWord} handleTest={this.handleTest} />
         }
 
         {this.state.currView === 'result' &&
-          <Result />
+          <Result result={this.state.currResult} handleResult={this.handleResult} />
         }
+
+        <Bar round={this.state.round} score={this.state.score} />
       </div>
     )
   }
 }
-
-export default Index

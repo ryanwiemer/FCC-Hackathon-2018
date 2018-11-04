@@ -1,7 +1,5 @@
 import React from 'react'
 
-const Lottery = () => {
+export default props => {
   return <></>
 }
-
-export default Lottery
