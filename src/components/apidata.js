@@ -30,11 +30,11 @@ export default class ClarifaiData extends Component {
   // You can use callbacks or promises
 
 
-  getClarifaiData (){
+  getClarifaiData (url){
       console.log("clicked");
-  app.models.predict(Clarifai.GENERAL_MODEL, 'https://scontent.cdninstagram.com/vp/a0974abfbb66344f5d432a16d173897d/5BE1E950/t51.2885-15/e15/s640x640/17818027_1913377855608988_1960219792539385856_n.jpg')
+  app.models.predict(Clarifai.GENERAL_MODEL, url)
   .then(res => {
-    console.log(JSON.stringify(res['outputs'][0]['data']['concepts']));
+    console.log(JSON.stringify(res['outputs'][0]['data']['concepts'][0]['name']));
   })
   }
 
@@ -81,7 +81,15 @@ export default class ClarifaiData extends Component {
           console.log(err);
         } else {
           // this.setState({data: data})
-          console.log(JSON.stringify(data));
+          //console.log(JSON.stringify(data));
+          let userImagesArray = [];
+          const imageLimit = 5;
+          for (let i = 0; i < imageLimit; i++) {
+            let currentImage = data['data'][i]['images']['standard_resolution']['url'];
+            userImagesArray.push(data['data'][i]['images']['standard_resolution']['url']);
+            this.getClarifaiData(currentImage);
+          }
+          //console.log(userImagesArray);
         }
       });
   }
@@ -91,7 +99,7 @@ export default class ClarifaiData extends Component {
   
     return(
         <div>
-            <button onClick={this.getInstagramData}>Get Instagram Data</button>
+            {/* <button onClick={this.getInstagramData}>Get Instagram Data</button> */}
             <button onClick={this.getClarifaiData}>Get Clarifai Data</button>
             <br />
             <a href={url}>Get Instragram </a>
