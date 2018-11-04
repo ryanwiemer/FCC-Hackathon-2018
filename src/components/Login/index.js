@@ -2,20 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
 
-import Clarifai from 'clarifai'
-import Instagram from 'node-instagram'
-import Constants from '../../common/constants'
+// import Clarifai from 'clarifai'
+// import Instagram from 'node-instagram'
+// import Constants from '../../common/constants'
 
-const app = new Clarifai.App({
-  apiKey: 'd63bab0d77c248f1bcb5304ff8d86cf4',
-})
+// const app = new Clarifai.App({
+//   apiKey: 'd63bab0d77c248f1bcb5304ff8d86cf4',
+// })
 
-let DERIVED_ACCESS_TOKEN = ''
+// let DERIVED_ACCESS_TOKEN = ''
 
-const REDIRECT_URI = 'http://localhost:8000'
-const url = `https://api.instagram.com/oauth/authorize/?client_id=${
-  Constants.CLIENT_ID
-}&redirect_uri=${REDIRECT_URI}&response_type=token`
+// const REDIRECT_URI = 'http://localhost:8000'
+// const url = `https://api.instagram.com/oauth/authorize/?client_id=${
+//   Constants.CLIENT_ID
+// }&redirect_uri=${REDIRECT_URI}&response_type=token`
 
 export default class ClarifaiData extends React.Component {
   // constructor() {
