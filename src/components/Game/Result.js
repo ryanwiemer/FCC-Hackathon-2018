@@ -27,6 +27,7 @@ export default props => {
 
     return (<View>
       <Heading>Time's up!</Heading>
+      
       </View>)
   }
 

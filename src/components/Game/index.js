@@ -93,7 +93,7 @@ export default class extends React.Component {
         }
 
         {this.state.currView === 'result' &&
-          <Result result={this.state.currResult} handleResult={this.handleResult.bind(this)} />
+          <Result score={this.state.score} result={this.state.currResult} handleResult={this.handleResult.bind(this)} />
         }
 
         <Bar round={this.state.round} score={this.state.score} />
