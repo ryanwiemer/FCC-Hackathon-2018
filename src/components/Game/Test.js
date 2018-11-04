@@ -54,9 +54,8 @@ export default class extends React.Component {
             ))}
 
           {/* wrong answers */}
-          {shuffle(
-            this.props.data.filter(item => item.word !== this.props.word)
-          )
+          {this.props.data
+            .filter(item => item.word !== this.props.word)
             .slice(0, 3)
             .map(item => (
               <Answer
