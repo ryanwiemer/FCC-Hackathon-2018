@@ -23,6 +23,9 @@ export default props => {
   return <Word>{word}</Word>
 }
 
+
+
+
 const Word = styled.div`
 font-size: 2rem;
 text-align: center;
