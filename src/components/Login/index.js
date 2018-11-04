@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
 `
 
 const Container = styled.div`
@@ -24,25 +25,37 @@ const Container = styled.div`
 const Row = styled.div`
   display: flex;
   justify-content: center;
+  margin: 0 0 2rem 0;
 `
 
 const Title = styled.h1`
-  font-size: 2em;
+  position: absolute;
+  top: 2rem;
+  font-size: 3em;
+  font-weight: bold;
   text-align: center;
-  text-transform: capitalize;
+  margin: 0 0 2rem 0;
+`
+
+const SubTitle = styled.h2`
+  font-size: 1em;
+  text-align: center;
   margin: 0 0 2rem 0;
 `
 
 const Login = props => {
   return (
     <Wrapper>
+      <Title>youlingual</Title>
       <Container>
-        <Title>Please select a language</Title>
+        <SubTitle>I want to learn</SubTitle>
         <Row>
           <Select
             languages={props.languages}
             handleChange={props.handleChange}
           />
+        </Row>
+        <Row>
           <Button handleSubmit={props.handleSubmit} />
           <button onClick={props.handleShare}>Skip to share view</button>
         </Row>
