@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import  Clarifai from 'clarifai';
 import Instagram from 'node-instagram';
-import Constants from '../common/contsants'
+import Constants from '../common/constants'
 
 const app = new Clarifai.App({
     apiKey: 'd63bab0d77c248f1bcb5304ff8d86cf4'
    });
 
+let DERIVED_ACCESS_TOKEN = "";
+
+   const REDIRECT_URI = "http://localhost:8000";
+   const url = `https://api.instagram.com/oauth/authorize/?client_id=${Constants.CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=token`
+
 // Create a new instance.
-const instagram = new Instagram({
-  clientId: Constants.CLIENT_ID,
-  clientSecret: Constants.CLIENT_SECRET,
-  accessToken: Constants.ACCESS_TOKEN
-});
+
  
 
 // Get information about the owner of the access_token.
@@ -27,30 +28,74 @@ export default class ClarifaiData extends Component {
   }
 
   // You can use callbacks or promises
-getInstagramData () {
-  instagram.get('users/self/media/recent', (err, data) => {
-    if (err) {
-      // an error occured
-      console.log(err);
-    } else {
-      console.log(data);
-    }
-  });
-}
+
 
   getClarifaiData (){
       console.log("clicked");
-  app.models.predict(Clarifai.GENERAL_MODEL, 'https://scontent.cdninstagram.com/vp/7732824dcd2c77dcf2b65cd4e81f16e4/5C65C8AE/t51.2885-19/s150x150/18253215_665499933649307_2955839000398528512_a.jpg')
+  app.models.predict(Clarifai.GENERAL_MODEL, 'https://scontent.cdninstagram.com/vp/a0974abfbb66344f5d432a16d173897d/5BE1E950/t51.2885-15/e15/s640x640/17818027_1913377855608988_1960219792539385856_n.jpg')
   .then(res => {
-    console.log(res['outputs'][0]['data']['concepts']);
+    console.log(JSON.stringify(res['outputs'][0]['data']['concepts']));
   })
+  }
+
+  getInstagramToken (){
+    console.log('clicked me');
+    window.location.replace(url);
+ 
+    // console.log(window.location.search);
+
+   // const myParams = urlParams.get("access_token");
+  
+
+
+    // https://api.instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT_URI&response_type=token
+  }
+
+  // getInstagramData () {
+  //   instagram.get('users/self/media/recent', (err, data) => {
+  //     if (err) {
+  //       // an error occured
+  //       console.log(err);
+  //     } else {
+  //       // this.setState({data: data})
+  //       console.log(JSON.stringify(data));
+  //     }
+  //   });
+  // }
+
+  componentDidMount(){
+    const hash = window.location.hash;
+    DERIVED_ACCESS_TOKEN = hash.split("=")[1];
+    console.log(window.location.hash);
+    console.log(DERIVED_ACCESS_TOKEN);
+    const instagram = new Instagram({
+      clientId: Constants.CLIENT_ID,
+      clientSecret: Constants.CLIENT_SECRET,
+      // accessToken: Constants.ACCESS_TOKEN
+      // accessToken: '1548230773.897a6d6.84310eb08ac0407387e80775b1b07e9d'
+       accessToken: DERIVED_ACCESS_TOKEN
+    });
+      instagram.get('users/self/media/recent', (err, data) => {
+        if (err) {
+          // an error occured
+          console.log(err);
+        } else {
+          // this.setState({data: data})
+          console.log(JSON.stringify(data));
+        }
+      });
   }
   
   render () {
+    console.log(window.location)
+  
     return(
         <div>
             <button onClick={this.getInstagramData}>Get Instagram Data</button>
             <button onClick={this.getClarifaiData}>Get Clarifai Data</button>
+            <br />
+            <a href={url}>Get Instragram </a>
+            <button onClick={this.getInstagramToken}>Get Instragram Token</button>
         </div>
     )
   }
