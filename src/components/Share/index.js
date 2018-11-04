@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100%;
+  min-height: 400px;
   background: linear-gradient(
     135deg,
     rgba(203, 86, 245, 1) 0%,
@@ -20,7 +21,6 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: inline-block;
   text-align: center;
-
   padding: 2em;
   margin: 0 auto;
   color: white;
@@ -34,8 +34,7 @@ const Container = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  font-size: 3em;
-  font-weight: bold;
+  font-size: 1em;
   margin: 0 0 2rem 0;
 `
 

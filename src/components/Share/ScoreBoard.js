@@ -3,15 +3,15 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div``
 
-const SubTitle = styled.h2`
-  font-size: 1.5em;
-`
-
 const Number = styled.h2`
-  font-size: 4em;
+  font-size: 2em;
   font-weight: bold;
   text-transform: uppercase;
   margin: 0 0 3rem 0;
+  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+    font-size: 3em;
+    margin: 0 0 3rem 0;
+  }
 `
 
 const ScoreBoard = props => {
