@@ -41,13 +41,22 @@ class IndexPage extends React.Component {
   }
 
   render() {
+    const { currentPage } = this.state
     return (
       <Layout>
-        <Login
-          languages={this.state.languages}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
+        <h1>{currentPage}</h1>
+
+        {currentPage === 'login' && (
+          <Login
+            languages={this.state.languages}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
+        )}
+
+        {currentPage === 'game' && <Game />}
+
+        {currentPage === 'share' && <Share />}
       </Layout>
     )
   }

@@ -1,32 +1,23 @@
 import React from 'react'
 
-const wordList = [
-  'banana',
-  'apple',
-  'orange'
-];
+const wordList = ['banana', 'apple', 'orange']
 
-
-let i = 0;
-let word = '';
+let i = 0
+let word = ''
 
 export default props => {
-  
-  const spin = setInterval(function(){ 
-    
-    word = wordList[i];
-    
-    i = i + 1;
-    if (i === wordList.length) i = 0;
-       
-  }, 150);
-  
-  setTimeout(function(){
-    clearInterval(spin);
+  const spin = setInterval(function() {
+    word = wordList[i]
 
-    props.handleLottery();
-  
-  }, 3000);
+    i = i + 1
+    if (i === wordList.length) i = 0
+  }, 150)
 
-  return <Word>{word}</Word>
+  setTimeout(function() {
+    clearInterval(spin)
+
+    props.handleLottery()
+  }, 3000)
+
+  return <>{word}</>
 }
