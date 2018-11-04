@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import ScoreBoard from './ScoreBoard'
 import SocialShare from './SocialShare'
 import StartAgain from './StartAgain'
+import Link from 'gatsby-link'
 
 const Wrapper = styled.div`
   display: flex;
@@ -38,6 +39,13 @@ const Title = styled.h1`
   margin: 0 0 2rem 0;
 `
 
+const Feedback = styled.div`
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+bottom: 1.5rem`
+
+
 const Share = props => {
   return (
     <Wrapper>
@@ -46,6 +54,7 @@ const Share = props => {
         <ScoreBoard score={props.finalScore} />
         <SocialShare />
         <StartAgain handleRestart={props.handleRestart} />
+        <Feedback><Link to="/feedback">Give us feedback</Link></Feedback>
       </Container>
     </Wrapper>
   )

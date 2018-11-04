@@ -69,6 +69,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+    margin: 0;
   }
 
   h1,h2,h3,h4,h4,h6 {
