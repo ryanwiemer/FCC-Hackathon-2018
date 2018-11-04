@@ -7,3 +7,4 @@ yarn*
 contentful-import-error-log*
 .env*
 .contentful.json
+src/common/constants.js

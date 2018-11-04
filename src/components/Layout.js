@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
 import Menu from '../components/Menu'
+import ClarifaiData from './apidata'
 
 class Layout extends React.Component {
   constructor() {
@@ -15,7 +16,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    const props = this.props
+    // const props = this.props
     const children = this.props.children
     const { loaded } = this.state
 
@@ -23,6 +24,7 @@ class Layout extends React.Component {
       <ThemeProvider theme={theme}>
         <div className={`${loaded ? ' loaded' : 'initial'}`}>
           <Menu />
+          <ClarifaiData />
 
           {children}
 

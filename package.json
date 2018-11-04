@@ -10,6 +10,8 @@
   ],
   "dependencies": {
     "babel-plugin-styled-components": "^1.8.0",
+    "clarifai": "^2.9.0",
+    "fs": "0.0.1-security",
     "gatsby": "^2.0.38",
     "gatsby-image": "^2.0.19",
     "gatsby-plugin-manifest": "^2.0.7",
@@ -20,6 +22,7 @@
     "gatsby-plugin-styled-components": "^3.0.1",
     "gatsby-source-filesystem": "^2.0.7",
     "gatsby-transformer-sharp": "^2.1.7",
+    "node-instagram": "^4.2.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-helmet": "^5.2.0",
@@ -42,8 +45,10 @@
     "clean": "rm -rf public .cache"
   },
   "devDependencies": {
+    "dotenv": "^6.1.0",
     "eslint": "^5.8.0",
     "eslint-config-gatsby-standard": "^2.1.0",
+    "gatsby-cli": "^2.4.4",
     "prettier": "^1.14.3",
     "stylelint": "^9.7.1",
     "stylelint-config-prettier": "^4.0.0",
