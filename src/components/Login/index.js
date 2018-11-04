@@ -17,6 +17,8 @@ import Select from './Select'
 //   Constants.CLIENT_ID
 // }&redirect_uri=${REDIRECT_URI}&response_type=token`
 
+
+
 export default class ClarifaiData extends React.Component {
   // constructor() {
   //   super()
