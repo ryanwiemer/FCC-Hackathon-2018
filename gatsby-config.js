@@ -28,6 +28,14 @@ module.exports = {
       }
     },
     "gatsby-plugin-offline",
-    "gatsby-plugin-netlify"
+    "gatsby-plugin-netlify",
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        typekit: {
+          id: 'nwj5jhw'
+        }
+      }
+    }
   ]
 };
