@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Word from '../../styles/Word'
+import Word from './Word'
 
 export default class extends React.Component {
 
@@ -40,9 +40,17 @@ export default class extends React.Component {
     const word = this.state.list[this.state.index % this.state.list.length]
   
     return (
-      <Word>{word}</Word>
+      <Container>
+        <Word>{word}</Word>
+      </Container>
     )
   }
 
 }
 
+const Container = styled.div`
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+`

@@ -9,9 +9,16 @@ export default props => {
 }
 
 const Bar = styled.section`
+position: absolute;
+left: 0;
+bottom: 0;
+width: 100vw;
 
 display: flex;
 justify-content: space-between;
 
 padding: .5rem;
+
+font-size: 1.2rem;
+font-weight: bold;
 `

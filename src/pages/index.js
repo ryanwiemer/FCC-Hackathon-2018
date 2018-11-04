@@ -56,7 +56,6 @@ class IndexPage extends React.Component {
     const { currentPage } = this.state
     return (
       <Layout>
-        <h1>{currentPage}</h1>
 
         {currentPage === 'login' && (
           <Login

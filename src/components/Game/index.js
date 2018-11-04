@@ -5,10 +5,12 @@ import Test from './Test'
 import Result from './Result'
 import styled from 'styled-components'
 
+import sample_data from './sample_data'
+
 export default class extends React.Component {
 
   state = {
-    data: '', // here we will store images and words from Clarifai
+    data: sample_data, // here we will store images and words from Clarifai
 
     currView: 'lottery',
 
@@ -58,6 +60,8 @@ export default class extends React.Component {
 
   render() {
 
+    console.log(this.state.data)
+
     return (
       <Game>
 
@@ -66,11 +70,11 @@ export default class extends React.Component {
         }
 
         {this.state.currView === 'test' &&
-          <Test data={this.state.data} word={this.state.currWord} handleTest={this.handleTest} />
+          <Test data={this.state.data} word={this.state.currWord} handleTest={this.handleTest.bind(this)} />
         }
 
         {this.state.currView === 'result' &&
-          <Result result={this.state.currResult} handleResult={this.handleResult} />
+          <Result result={this.state.currResult} handleResult={this.handleResult.bind(this)} />
         }
 
         <Bar round={this.state.round} score={this.state.score} />
