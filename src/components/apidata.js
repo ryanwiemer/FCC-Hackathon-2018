@@ -89,6 +89,7 @@ export default class ClarifaiData extends Component {
       }
     })
   }
+
   render() {
     console.log(window.location)
     return (

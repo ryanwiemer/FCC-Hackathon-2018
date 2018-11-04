@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 import Game from '../components/Game'
 import Login from '../components/Login'
 import Share from '../components/Share'
-import apidata from '../components/apidata'
+import API from '../components/apidata'
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -50,6 +50,10 @@ class IndexPage extends React.Component {
     })
   }
 
+  receiveData = data => {
+    console.log(data)
+  }
+
   gameOver = score => {
     this.setState({
       currentPage: 'share',
@@ -62,11 +66,14 @@ class IndexPage extends React.Component {
     return (
       <Layout>
         {currentPage === 'login' && (
-          <Login
-            languages={this.state.languages}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
+          <div>
+            <Login
+              languages={this.state.languages}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />
+            <API />
+          </div>
         )}
 
         {currentPage === 'game' && <Game gameOver={this.gameOver} />}
