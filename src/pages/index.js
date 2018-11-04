@@ -3,6 +3,7 @@ import Layout from '../components/Layout'
 import Game from '../components/Game'
 import Login from '../components/Login'
 import Share from '../components/Share'
+import apidata from '../components/apidata'
 
 class IndexPage extends React.Component {
   constructor(props) {
