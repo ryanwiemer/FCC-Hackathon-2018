@@ -93,7 +93,6 @@ export default class ClarifaiData extends React.Component {
   // }
 
   render() {
-    console.log(window.location)
     return (
       <Wrapper>
         <Title>youlingual</Title>
