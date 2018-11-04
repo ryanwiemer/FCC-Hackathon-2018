@@ -37,7 +37,7 @@ export default class extends React.Component {
             .filter(item => item.word === this.props.word)
             .slice(0, 1)
             .map(item => (
-              <img
+              <Answer
                 onClick={() => this.props.handleTest('success', winScore)}
                 src={item.image}
                 key={item.image}
@@ -50,7 +50,7 @@ export default class extends React.Component {
             .filter(item => item.word !== this.props.word)
             .slice(0, 3)
             .map(item => (
-              <img
+              <Answer
                 onClick={() => this.props.handleTest('fail', 0)}
                 src={item.image}
                 key={item.image}
@@ -81,17 +81,21 @@ const Answers = styled.section`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  width: 100%;
-  max-width: calc(100vh - 12rem);
+  width: 100vw;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 
-  > * {
-    width: calc(50% - 1rem);
-    padding: 0.5rem;
-  }
+`
+
+const Answer = styled.img`
+width: calc(50vw - 1rem);
+height: calc(50vw - 1rem);
+max-width: calc(50vh - 6rem);
+max-height: calc(50vh - 6rem);
+object-fit: cover;
+padding: 0.5rem;
+cursor: pointer;
 `
