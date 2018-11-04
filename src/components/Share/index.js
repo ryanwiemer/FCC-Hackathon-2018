@@ -51,7 +51,7 @@ const Share = props => {
     <Wrapper>
       <Container>
         <Title>Wow! You scored:</Title>
-        <ScoreBoard score="100" />
+        <ScoreBoard score={props.finalScore} />
         <SocialShare />
         <StartAgain handleRestart={props.handleRestart} />
         <Feedback><Link to="/feedback">Give us feedback</Link></Feedback>

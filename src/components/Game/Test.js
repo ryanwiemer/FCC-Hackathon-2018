@@ -28,7 +28,7 @@ export default class extends React.Component {
 
     return (
       <div>
-        <Countdown>{this.state.time / 1000}</Countdown>
+        <Countdown>⏰ {this.state.time / 1000}s</Countdown>
         <Question>Where's</Question>
         <Word>{this.props.word}</Word>
         <Answers>
@@ -65,8 +65,10 @@ export default class extends React.Component {
 
 const Countdown = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
+  font-weight: bold;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 60px;
 `
 
 const Question = styled.p`

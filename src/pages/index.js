@@ -25,6 +25,7 @@ class IndexPage extends React.Component {
       currentLanguage: '',
       currentPage: 'login',
       instagramToken: '',
+      finalScore: null,
     }
   }
 
@@ -54,9 +55,10 @@ class IndexPage extends React.Component {
     })
   }
 
-  gameOver = event => {
+  gameOver = score => {
     this.setState({
       currentPage: 'share',
+      finalScore: score,
     })
   }
 
@@ -76,7 +78,10 @@ class IndexPage extends React.Component {
         {currentPage === 'game' && <Game gameOver={this.gameOver} />}
 
         {currentPage === 'share' && (
-          <Share handleRestart={this.handleRestart} />
+          <Share
+            handleRestart={this.handleRestart}
+            finalScore={this.state.finalScore}
+          />
         )}
       </Layout>
     )
