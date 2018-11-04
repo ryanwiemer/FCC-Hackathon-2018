@@ -43,14 +43,12 @@ class IndexPage extends React.Component {
   }
 
   receiveData = result => {
-
     console.log(result)
 
     this.setState({
       data: result,
       currentPage: 'game',
     })
-
   }
 
   gameOver = score => {
@@ -71,12 +69,15 @@ class IndexPage extends React.Component {
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               sendData={this.receiveData}
+              currentLanguage={this.state.currentLanguage}
             />
             {/* <API sendData={this.receiveData} /> */}
           </div>
         )}
 
-        {currentPage === 'game' && <Game data={this.state.data} gameOver={this.gameOver} />}
+        {currentPage === 'game' && (
+          <Game data={this.state.data} gameOver={this.gameOver} />
+        )}
 
         {currentPage === 'share' && (
           <Share

@@ -33,17 +33,22 @@ export default class ClarifaiData extends React.Component {
     for (var i = 0; i < urls.length; i++) {
       // var currentComb = {};
       // currentComb.url = urls[i];
-      app.models.predict(Clarifai.GENERAL_MODEL, urls[i]).then(res => {
-        var word = res['outputs'][0]['data']['concepts'][0]['name']
-        
-        var image = res['outputs'][0]['input']['data']['image']['url']
-        
-        var currentComb = {}
-        currentComb.image = image
-        currentComb.word = word
-        // console.log(currentComb)
-        result.push(currentComb)
-      })
+
+      app.models
+        .predict(Clarifai.GENERAL_MODEL, urls[i], {
+          language: 'es',
+        })
+        .then(res => {
+          var word = res['outputs'][0]['data']['concepts'][0]['name']
+
+          var image = res['outputs'][0]['input']['data']['image']['url']
+
+          var currentComb = {}
+          currentComb.image = image
+          currentComb.word = word
+          // console.log(currentComb)
+          result.push(currentComb)
+        })
     }
     // this.setState({ data: result })
 
@@ -82,7 +87,7 @@ export default class ClarifaiData extends React.Component {
           userImagesArray.push(currentImage)
           // this.getClarifaiData(currentImage);
         }
-        this.getClarifaiData(userImagesArray)
+        this.getClarifaiData(userImagesArray).bind(this)
         // console.log(userImagesArray);
       }
     })
@@ -108,7 +113,7 @@ export default class ClarifaiData extends React.Component {
             {/* <br /> */}
             {/* <a href={url}>Get Instragram </a> */}
             <button onClick={this.getInstagramToken}>
-              Get Instragram Token
+              Get Instragram Token {this.props.currentLanguage}
             </button>
           </Row>
         </Container>
