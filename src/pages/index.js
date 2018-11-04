@@ -40,6 +40,18 @@ class IndexPage extends React.Component {
     })
   }
 
+  handleRestart = event => {
+    this.setState({
+      currentPage: 'login',
+    })
+  }
+
+  handleShare = event => {
+    this.setState({
+      currentPage: 'share',
+    })
+  }
+
   render() {
     const { currentPage } = this.state
     return (
@@ -51,12 +63,15 @@ class IndexPage extends React.Component {
             languages={this.state.languages}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            handleShare={this.handleShare}
           />
         )}
 
         {currentPage === 'game' && <Game />}
 
-        {currentPage === 'share' && <Share />}
+        {currentPage === 'share' && (
+          <Share handleRestart={this.handleRestart} />
+        )}
       </Layout>
     )
   }

@@ -39,6 +39,8 @@ const Login = props => {
             handleChange={props.handleChange}
           />
           <Button handleSubmit={props.handleSubmit} />
+
+          <button onClick={props.handleShare}>Skip to share view</button>
         </div>
       </Container>
     </Wrapper>

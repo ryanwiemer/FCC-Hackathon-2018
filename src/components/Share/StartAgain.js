@@ -9,8 +9,8 @@ const Wrapper = styled.button`
   cursor: pointer;
 `
 
-const Button = props => {
-  return <Wrapper onClick={props.handleSubmit}>Login</Wrapper>
+const StartAgain = props => {
+  return <Wrapper onClick={props.handleRestart}>Play again</Wrapper>
 }
 
-export default Button
+export default StartAgain
