@@ -1,5 +1,5 @@
 {
-  "name": "insta-learn",
+  "name": "You-Lingual",
   "description": "Learn a new language from your social media with the power of machine learning and your friends' selfies.",
   "version": "0.0.1",
   "author": [
@@ -25,7 +25,6 @@
     "react-dom": "^16.6.0",
     "react-helmet": "^5.2.0",
     "react-overdrive": "0.0.10",
-    "react-pose": "^3.4.0",
     "styled-components": "^4.0.3"
   },
   "keywords": [
