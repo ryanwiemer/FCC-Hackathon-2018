@@ -8,7 +8,6 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ time: 6000 })
     this.interval = setInterval(this.updateCount.bind(this), 200)
   }
 

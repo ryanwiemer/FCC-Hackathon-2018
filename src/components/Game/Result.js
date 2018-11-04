@@ -18,33 +18,46 @@ const Heading = styled.h1`
     font-size: 3em;
   }
 `
+export default class extends React.Component {
+  state = {
+    time: 1500,
+  }
 
-export default props => {
-  setTimeout(
-    // after 3s
-    function() {
-      props.handleResult() // go to next round
-    },
-    3000
-  )
+  componentDidMount() {
+    this.interval = setInterval(this.updateCount.bind(this), 200)
+  }
 
-  if (props.result === 'success') {
-    return (
-      <View>
-        <Heading>Correct, Great Job! 🎉</Heading>
-      </View>
-    )
-  } else if (props.result === 'fail') {
-    return (
-      <View>
-        <Heading>Sorry, Incorrect 😭</Heading>
-      </View>
-    )
-  } else {
-    return (
-      <View>
-        <Heading>Sorry, Time Ran Out! ⏰</Heading>
-      </View>
-    )
+  updateCount() {
+    this.setState({ time: this.state.time - 200 })
+
+    if (this.state.time <= 0) {
+      this.props.handleResult()
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+
+  render() {
+    if (this.props.result === 'success') {
+      return (
+        <View>
+          <Heading>Correct, Great Job! 🎉</Heading>
+        </View>
+      )
+    } else if (props.result === 'fail') {
+      return (
+        <View>
+          <Heading>Sorry, Incorrect 😭</Heading>
+        </View>
+      )
+    } else {
+      return (
+        <View>
+          <Heading>Sorry, Time Ran Out! ⏰</Heading>
+        </View>
+      )
+    }
   }
 }
