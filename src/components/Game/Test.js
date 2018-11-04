@@ -2,6 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import Word from './Word'
 
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 export default class extends React.Component {
   state = {
     time: 6000,
@@ -46,8 +54,9 @@ export default class extends React.Component {
             ))}
 
           {/* wrong answers */}
-          {this.props.data
-            .filter(item => item.word !== this.props.word)
+          {shuffle(
+            this.props.data.filter(item => item.word !== this.props.word)
+          )
             .slice(0, 3)
             .map(item => (
               <Answer
@@ -87,15 +96,14 @@ const Answers = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
 `
 
 const Answer = styled.img`
-width: calc(50vw - 1rem);
-height: calc(50vw - 1rem);
-max-width: calc(50vh - 6rem);
-max-height: calc(50vh - 6rem);
-object-fit: cover;
-padding: 0.5rem;
-cursor: pointer;
+  width: calc(50vw - 1rem);
+  height: calc(50vw - 1rem);
+  max-width: calc(50vh - 6rem);
+  max-height: calc(50vh - 6rem);
+  object-fit: cover;
+  padding: 0.5rem;
+  cursor: pointer;
 `
