@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from './Button'
 import Select from './Select'
 
 import Clarifai from 'clarifai'
@@ -112,9 +111,7 @@ export default class ClarifaiData extends React.Component {
             {/* <button onClick={this.getClarifaiData}>Get Clarifai Data</button> */}
             {/* <br /> */}
             {/* <a href={url}>Get Instragram </a> */}
-            <button onClick={this.getInstagramToken}>
-              Get Instragram Token {this.props.currentLanguage}
-            </button>
+            <Button onClick={this.getInstagramToken}>Let's go!</Button>
           </Row>
         </Container>
       </Wrapper>
@@ -160,4 +157,18 @@ const SubTitle = styled.h2`
   font-size: 1em;
   text-align: center;
   margin: 0 0 2rem 0;
+`
+
+
+const Button = styled.button`
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  background: linear-gradient(
+    135deg,
+    rgba(203, 86, 245, 1) 0%,
+    rgba(252, 222, 51, 1) 100%
+  );
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
 `
