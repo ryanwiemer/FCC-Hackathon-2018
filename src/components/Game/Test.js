@@ -16,7 +16,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    // this.interval = setInterval(this.updateCount.bind(this), 200)
+    this.interval = setInterval(this.updateCount.bind(this), 200)
   }
 
   updateCount() {
