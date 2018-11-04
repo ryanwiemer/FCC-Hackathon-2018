@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     border: 0;
     font-size: 100%;
     font: inherit;
-    vertical-align: baseline;
+    vertical-align: primaryline;
   }
   article, aside, details, figcaption, figure,
   footer, header, hgroup, menu, nav, section {
@@ -62,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    color: ${theme.colors.base};
+    color: ${theme.colors.primary};
     line-height: 1;
     font-variant-ligatures: none;
     -moz-osx-font-smoothing: grayscale;
@@ -72,7 +72,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1,h2,h3,h4,h4,h6 {
-    font-family: 'B',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: sofia-pro, -apple-system, Helvetica, Roboto, Arial, sans-serif;
   }
 
   img {
@@ -83,14 +83,14 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: ${theme.colors.base};
+    color: ${theme.colors.primary};
   }
 
   button,
   input,
   textarea,
   select {
-    color: ${theme.colors.base};
+    color: ${theme.colors.primary};
     font-family: inherit;
     font-size: inherit;
     background: none;
