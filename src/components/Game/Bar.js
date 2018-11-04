@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export default props => {
   return <Bar>
-    <p>{props.round} / 20</p>
+    <p>{props.round} / {props.maxRound}</p>
     <p>💎 {props.score}</p>
   </Bar>
 }

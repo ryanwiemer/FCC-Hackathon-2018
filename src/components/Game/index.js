@@ -28,6 +28,8 @@ const sample_data = [
   },
 ]
 
+const maxRound = 4;
+
 export default class extends React.Component {
 
   state = {
@@ -57,13 +59,12 @@ export default class extends React.Component {
     this.updateView('test');
   }
 
-  handleTest(result) {
+  handleTest(result, score) {
 
     this.setState({
       currResult: result,
+      score: this.state.score + score,
     })
-
-    // add: update score
 
     this.updateView('result');
   }
@@ -73,8 +74,10 @@ export default class extends React.Component {
     console.log('next round')
 
     this.setState({
-      currRound: this.state.round + 1,
+      round: this.state.round + 1,
     })
+
+    if (this.state.round > maxRound) this.props.gameOver()
 
     this.updateView('lottery');
   }
@@ -96,7 +99,7 @@ export default class extends React.Component {
           <Result score={this.state.score} result={this.state.currResult} handleResult={this.handleResult.bind(this)} />
         }
 
-        <Bar round={this.state.round} score={this.state.score} />
+        <Bar round={this.state.round} score={this.state.score}  maxRound={maxRound} />
       </Game>
     )
   }

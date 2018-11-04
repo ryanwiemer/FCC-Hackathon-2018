@@ -54,6 +54,12 @@ class IndexPage extends React.Component {
     })
   }
 
+  gameOver = event => {
+    this.setState({
+      currentPage: 'share',
+    })
+  }
+
   render() {
     const { currentPage } = this.state
     return (
@@ -68,7 +74,7 @@ class IndexPage extends React.Component {
           />
         )}
 
-        {currentPage === 'game' && <Game />}
+        {currentPage === 'game' && <Game gameOver={this.gameOver} />}
 
         {currentPage === 'share' && (
           <Share handleRestart={this.handleRestart} />
