@@ -40,23 +40,31 @@ class IndexPage extends React.Component {
     })
   }
 
+  handleShare = event => {
+    // If authentication is successful
+    this.setState({
+      currentPage: 'share',
+    })
+  }
+
   render() {
     const { currentPage } = this.state
     return (
       <Layout>
         <h1>{currentPage}</h1>
 
-        {currentPage === 'login0' && (
+        {currentPage === 'login' && (
           <Login
             languages={this.state.languages}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            handleShare={this.handleShare}
           />
         )}
 
         {currentPage === 'game' && <Game />}
 
-        {currentPage === 'login' && <Share />}
+        {currentPage === 'share' && <Share />}
       </Layout>
     )
   }
