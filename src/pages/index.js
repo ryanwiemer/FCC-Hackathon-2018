@@ -36,6 +36,12 @@ class IndexPage extends React.Component {
     })
   }
 
+  handleLogin = event => {
+    this.setState({
+      currentPage: 'game',
+    })
+  }
+
   handleRestart = event => {
     this.setState({
       currentPage: 'game',
@@ -67,6 +73,7 @@ class IndexPage extends React.Component {
             <Login
               languages={this.state.languages}
               handleChange={this.handleChange}
+              handleLogin={this.handleLogin}
               handleSubmit={this.handleSubmit}
               sendData={this.receiveData}
               currentLanguage={this.state.currentLanguage}
