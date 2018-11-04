@@ -9,6 +9,7 @@ const View = styled.div`
   align-items: center;
   padding: 1em;
   text-align: center;
+  background-color: ${props => props.background};
 `
 
 const Heading = styled.h1`
@@ -20,15 +21,15 @@ const Heading = styled.h1`
 `
 export default class extends React.Component {
   state = {
-    time: 1500,
+    time: 1200,
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.updateCount.bind(this), 200)
+    this.interval = setInterval(this.updateCount.bind(this), 100)
   }
 
   updateCount() {
-    this.setState({ time: this.state.time - 200 })
+    this.setState({ time: this.state.time - 100 })
 
     if (this.state.time <= 0) {
       this.props.handleResult()
@@ -42,19 +43,19 @@ export default class extends React.Component {
   render() {
     if (this.props.result === 'success') {
       return (
-        <View>
+        <View background="#FCDE33">
           <Heading>Correct, Great Job! 🎉</Heading>
         </View>
       )
     } else if (this.props.result === 'fail') {
       return (
-        <View>
+        <View background="#BCC4DE">
           <Heading>Sorry, Incorrect 😭</Heading>
         </View>
       )
     } else {
       return (
-        <View>
+        <View background="#E2E2E2">
           <Heading>Sorry, Time Ran Out! ⏰</Heading>
         </View>
       )
