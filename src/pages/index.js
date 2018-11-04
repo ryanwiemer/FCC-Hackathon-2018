@@ -46,7 +46,7 @@ class IndexPage extends React.Component {
       <Layout>
         <h1>{currentPage}</h1>
 
-        {currentPage === 'login' && (
+        {currentPage === 'login0' && (
           <Login
             languages={this.state.languages}
             handleChange={this.handleChange}
@@ -56,7 +56,7 @@ class IndexPage extends React.Component {
 
         {currentPage === 'game' && <Game />}
 
-        {currentPage === 'share' && <Share />}
+        {currentPage === 'login' && <Share />}
       </Layout>
     )
   }
