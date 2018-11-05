@@ -13,13 +13,19 @@ export default class extends React.Component {
   state = {
     data: this.props.data,
 
-    currView: 'lottery',
+    currView: '',
 
     currWord: 'hello',
     currResult: 'success',
 
     round: 1,
     score: 0,
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({currView: 'lottery'})
+    }, 500)
   }
 
   updateView(newView) {
@@ -32,6 +38,7 @@ export default class extends React.Component {
     this.setState({
       currWord: word,
     })
+    console.log(word);
 
     this.updateView('test')
   }
