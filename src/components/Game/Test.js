@@ -10,9 +10,12 @@ function shuffle(a) {
   return a
 }
 
+
 export default class extends React.Component {
   state = {
     time: 6000,
+    data: shuffle(this.props.data),
+    order: Math.floor((Math.random() * 4) + 1),
   }
 
   componentDidMount() {
@@ -50,6 +53,7 @@ export default class extends React.Component {
                 src={item.image}
                 key={item.image}
                 alt={item.word}
+                order={this.state.order}
               />
             ))}
 
@@ -105,4 +109,5 @@ const Answer = styled.img`
   object-fit: cover;
   padding: 0.5rem;
   cursor: pointer;
+  order: ${props => props.order? props.order : ''}
 `
