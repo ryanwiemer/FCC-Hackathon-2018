@@ -1,8 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
+
+const Button = styled(Link)`
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+`
 
 const feedback = () => {
   return (
@@ -21,6 +28,7 @@ const feedback = () => {
           </textarea>
           <input type="submit" value="Send" />
         </form>
+        <Button to="/">Start Again</Button>
       </Container>
     </Layout>
   )
