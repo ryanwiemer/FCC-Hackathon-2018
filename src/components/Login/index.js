@@ -28,14 +28,17 @@ export default class ClarifaiData extends React.Component {
   getClarifaiData(urls) {
     // console.log(urls);
     var result = []
+    const language = localStorage.getItem('language') !== null ? localStorage.getItem('language') : 'en'
 
     for (var i = 0; i < urls.length; i++) {
       // var currentComb = {};
       // currentComb.url = urls[i];
 
+      
+
       app.models
         .predict(Clarifai.GENERAL_MODEL, urls[i], {
-          language: 'es',
+          language: language,
         })
         .then(res => {
           var word = res['outputs'][0]['data']['concepts'][0]['name']

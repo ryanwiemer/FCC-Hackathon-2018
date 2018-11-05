@@ -14,16 +14,21 @@ const LanguageSelect = styled.select`
   margin: 0 1rem 0 0;
 `
 
-const Select = props => {
-  return (
-    <LanguageSelect onChange={props.handleChange}>
-      {props.languages.map((language, index) => (
-        <option key={index} value={language.code}>
-          {language.title}
-        </option>
-      ))}
-    </LanguageSelect>
-  )
-}
+export default class extends React.Component {
 
-export default Select
+  saveLanguage(event) {
+    localStorage.setItem('language', event.target.value);
+  }
+
+  render() {
+    return (
+      <LanguageSelect onChange={this.saveLanguage}>
+        {this.props.languages.map((language, index) => (
+          <option key={index} value={language.code}>
+            {language.title}
+          </option>
+        ))}
+      </LanguageSelect>
+    )
+  }
+}
