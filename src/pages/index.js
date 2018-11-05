@@ -39,8 +39,60 @@ const languages = [
     code: 'fr',
   },
   {
+    title: 'Hindi',
+    code: 'hi',
+  },
+  {
+    title: 'Hungarian',
+    code: 'hu',
+  },
+  {
     title: 'Italian',
     code: 'it',
+  },
+  {
+    title: 'Japanese',
+    code: 'ja',
+  },
+  {
+    title: 'Korean',
+    code: 'ko',
+  },
+  {
+    title: 'Dutch',
+    code: 'nl',
+  },
+  {
+    title: 'Norweigan',
+    code: 'no',
+  },
+  {
+    title: 'Punjabi',
+    code: 'pa',
+  },
+  {
+    title: 'Polish',
+    code: 'pl',
+  },
+  {
+    title: 'Portuguese',
+    code: 'pt',
+  },
+  {
+    title: 'Russian',
+    code: 'ru',
+  },
+  {
+    title: 'Swedish',
+    code: 'sv',
+  },
+  {
+    title: 'Turkish',
+    code: 'tr',
+  },
+  {
+    title: 'Chinese',
+    code: 'zh',
   },
 ]
 
