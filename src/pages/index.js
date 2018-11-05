@@ -5,35 +5,54 @@ import Login from '../components/Login'
 import Share from '../components/Share'
 import API from '../components/apidata'
 
+const languages = [
+  {
+    title: 'Arabic',
+    code: 'ar',
+  },
+  {
+    title: 'Bengali',
+    code: 'ar',
+  },
+  {
+    title: 'Danish',
+    code: 'da',
+  },
+  {
+    title: 'German',
+    code: 'de',
+  },
+  {
+    title: 'English',
+    code: 'en',
+  },
+  {
+    title: 'Spanish',
+    code: 'es',
+  },
+  {
+    title: 'Finnish',
+    code: 'fi',
+  },
+  {
+    title: 'French',
+    code: 'fr',
+  },
+  {
+    title: 'Italian',
+    code: 'it',
+  },
+]
+
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       data: {},
-      languages: [
-        {
-          title: 'English',
-          code: 'en',
-        },
-        {
-          title: 'Spanish',
-          code: 'es',
-        },
-        {
-          title: 'French',
-          code: 'fr',
-        },
-      ],
-      currentLanguage: '',
+      languages: languages,
       currentPage: 'login',
       finalScore: null,
     }
-  }
-
-  handleChange = event => {
-    this.setState({
-      currentLanguage: event.target.value,
-    })
   }
 
   handleLogin = event => {
