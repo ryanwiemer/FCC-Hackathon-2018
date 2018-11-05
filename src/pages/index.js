@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 import Game from '../components/Game'
 import Login from '../components/Login'
 import Share from '../components/Share'
-import API from '../components/apidata'
+// import API from '../components/apidata'
 
 const languages = [
   {
