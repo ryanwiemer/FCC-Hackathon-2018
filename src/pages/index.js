@@ -7,6 +7,22 @@ import API from '../components/apidata'
 
 const languages = [
   {
+    title: 'Arabic',
+    code: 'ar',
+  },
+  {
+    title: 'Bengali',
+    code: 'ar',
+  },
+  {
+    title: 'Danish',
+    code: 'da',
+  },
+  {
+    title: 'German',
+    code: 'de',
+  },
+  {
     title: 'English',
     code: 'en',
   },
@@ -15,8 +31,16 @@ const languages = [
     code: 'es',
   },
   {
+    title: 'Finnish',
+    code: 'fi',
+  },
+  {
     title: 'French',
     code: 'fr',
+  },
+  {
+    title: 'Italian',
+    code: 'it',
   },
 ]
 

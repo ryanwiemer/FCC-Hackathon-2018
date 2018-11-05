@@ -10,16 +10,23 @@ function shuffle(a) {
   return a
 }
 
-
 export default class extends React.Component {
   state = {
     time: 5000,
     data: shuffle(this.props.data),
-    order: Math.floor((Math.random() * 4) + 1),
+    order: Math.floor(Math.random() * 4 + 1),
   }
 
   componentDidMount() {
     this.interval = setInterval(this.updateCount.bind(this), 200)
+
+    // speech
+    if (typeof window !== `undefined`) {
+      var synth = window.speechSynthesis
+      var say = new SpeechSynthesisUtterance(this.props.word)
+      say.lang = localStorage.getItem('language')
+      synth.speak(say)
+    }
   }
 
   updateCount() {
@@ -110,5 +117,5 @@ const Answer = styled.img`
   object-fit: cover;
   padding: 0.5rem;
   cursor: pointer;
-  order: ${props => props.order? props.order : ''}
+  order: ${props => (props.order ? props.order : '')};
 `

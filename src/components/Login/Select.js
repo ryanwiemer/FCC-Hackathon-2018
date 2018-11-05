@@ -16,6 +16,10 @@ const LanguageSelect = styled.select`
 
 export default class extends React.Component {
 
+  componentDidMount() {
+    // localStorage.setItem('language', 'ar'); // default language
+  }
+
   saveLanguage(event) {
     localStorage.setItem('language', event.target.value);
   }
