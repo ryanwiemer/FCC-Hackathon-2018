@@ -4,6 +4,19 @@ import Select from './Select'
 
 import Clarifai from 'clarifai'
 import Instagram from 'node-instagram'
+import { graphql } from 'gatsby'
+
+export const query = graphql`
+  query PageQuery {
+    site {
+      siteMetadata {
+        title
+        client_id
+        client_secret
+      }
+    }
+  }
+  `
 
 const app = new Clarifai.App({
   apiKey: 'd63bab0d77c248f1bcb5304ff8d86cf4',
@@ -11,9 +24,11 @@ const app = new Clarifai.App({
 
 let DERIVED_ACCESS_TOKEN = ''
 
+console.log(this.props.data);
+
 const REDIRECT_URI = 'http://localhost:8000'
 const url = `https://api.instagram.com/oauth/authorize/?client_id=${
-  process.env.CLIENT_ID
+  this.props.data.site.siteMetadata.client_id
 }&redirect_uri=${REDIRECT_URI}&response_type=token`
 
 
@@ -71,8 +86,8 @@ export default class ClarifaiData extends React.Component {
     const instagram = new Instagram({
      // clientId: Constants.CLIENT_ID,
      // clientSecret: Constants.CLIENT_SECRET,
-      clientId: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
+      clientId: this.props.data.site.siteMetadata.client_id,
+      clientSecret: this.props.data.site.siteMetadata.client_secret,
       // accessToken: Constants.ACCESS_TOKEN
       // accessToken: '1548230773.897a6d6.84310eb08ac0407387e80775b1b07e9d'
       accessToken: DERIVED_ACCESS_TOKEN,
