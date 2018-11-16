@@ -6,5 +6,6 @@ yarn*
 *.log
 contentful-import-error-log*
 .env*
+!.env.sample
 .contentful.json
 src/common
