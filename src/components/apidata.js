@@ -9,10 +9,11 @@ const app = new Clarifai.App({
 
 let DERIVED_ACCESS_TOKEN = ''
 
-/* const REDIRECT_URI = 'http://localhost:8000'
-const url = `https://api.instagram.com/oauth/authorize/?client_id=${
-  Constants.CLIENT_ID
-}&redirect_uri=${REDIRECT_URI}&response_type=token` */
+// const REDIRECT_URI = 'http://localhost:8000'
+// const url = `https://api.instagram.com/oauth/authorize/?client_id=${
+//   Constants.CLIENT_ID
+// }&redirect_uri=${REDIRECT_URI}&response_type=token`
+const url="";
 
 // Create a new instance.
 
@@ -65,8 +66,8 @@ export default class ClarifaiData extends Component {
     console.log(window.location.hash)
     console.log(DERIVED_ACCESS_TOKEN)
     const instagram = new Instagram({
-      clientId: Constants.CLIENT_ID,
-      clientSecret: Constants.CLIENT_SECRET,
+      clientId:"",
+      clientSecret:"",
       // accessToken: Constants.ACCESS_TOKEN
       // accessToken: '1548230773.897a6d6.84310eb08ac0407387e80775b1b07e9d'
       accessToken: DERIVED_ACCESS_TOKEN,

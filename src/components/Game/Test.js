@@ -12,11 +12,21 @@ function shuffle(a) {
 
 export default class extends React.Component {
   state = {
-    time: 6000,
+    time: 5000,
+    data: shuffle(this.props.data),
+    order: Math.floor(Math.random() * 4 + 1),
   }
 
   componentDidMount() {
     this.interval = setInterval(this.updateCount.bind(this), 200)
+
+    // speech
+    if (typeof window !== `undefined`) {
+      var synth = window.speechSynthesis
+      var say = new SpeechSynthesisUtterance(this.props.word)
+      say.lang = localStorage.getItem('language')
+      synth.speak(say)
+    }
   }
 
   updateCount() {
@@ -32,7 +42,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const winScore = 6 + Math.floor(this.state.time / 1000)
+    const winScore = 5 + Math.floor(this.state.time / 1000)
 
     return (
       <div>
@@ -50,6 +60,7 @@ export default class extends React.Component {
                 src={item.image}
                 key={item.image}
                 alt={item.word}
+                order={this.state.order}
               />
             ))}
 
@@ -57,12 +68,13 @@ export default class extends React.Component {
           {this.props.data
             .filter(item => item.word !== this.props.word)
             .slice(0, 3)
-            .map(item => (
+            .map((item, index) => (
               <Answer
                 onClick={() => this.props.handleTest('fail', 0)}
                 src={item.image}
-                key={item.image}
+                key={index}
                 alt={item.word}
+                order={index}
               />
             ))}
         </Answers>
@@ -105,4 +117,5 @@ const Answer = styled.img`
   object-fit: cover;
   padding: 0.5rem;
   cursor: pointer;
+  order: ${props => (props.order ? props.order : '')};
 `

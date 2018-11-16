@@ -2,95 +2,115 @@ import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
 
-// import Clarifai from 'clarifai'
-// import Instagram from 'node-instagram'
-// import Constants from '../../common/constants'
+import Clarifai from 'clarifai'
+import Instagram from 'node-instagram'
+import { graphql } from 'gatsby'
 
-// const app = new Clarifai.App({
-//   apiKey: 'd63bab0d77c248f1bcb5304ff8d86cf4',
-// })
+export const query = graphql`
+  query PageQuery {
+    site {
+      siteMetadata {
+        title
+        client_id
+        client_secret
+      }
+    }
+  }
+  `
 
-// let DERIVED_ACCESS_TOKEN = ''
+const app = new Clarifai.App({
+  apiKey: 'd63bab0d77c248f1bcb5304ff8d86cf4',
+})
 
-// const REDIRECT_URI = 'http://localhost:8000'
-// const url = `https://api.instagram.com/oauth/authorize/?client_id=${
-//   Constants.CLIENT_ID
-// }&redirect_uri=${REDIRECT_URI}&response_type=token`
+let DERIVED_ACCESS_TOKEN = ''
+
+console.log(this.props.data);
+
+const REDIRECT_URI = 'http://localhost:8000'
+const url = `https://api.instagram.com/oauth/authorize/?client_id=${
+  this.props.data.site.siteMetadata.client_id
+}&redirect_uri=${REDIRECT_URI}&response_type=token`
 
 
 
 export default class ClarifaiData extends React.Component {
-  // constructor() {
-  //   super()
-  //   this.state = { data: [] }
-  // }
+  constructor() {
+    super()
+    this.state = { data: [] }
+  }
 
-  // getClarifaiData(urls) {
-  //   // console.log(urls);
-  //   var result = []
+  getClarifaiData(urls) {
+    // console.log(urls);
+    var result = []
+    const language = localStorage.getItem('language') !== null ? localStorage.getItem('language') : 'en'
 
-  //   for (var i = 0; i < urls.length; i++) {
-  //     // var currentComb = {};
-  //     // currentComb.url = urls[i];
+    for (var i = 0; i < urls.length; i++) {
+      // var currentComb = {};
+      // currentComb.url = urls[i];
 
-  //     app.models
-  //       .predict(Clarifai.GENERAL_MODEL, urls[i], {
-  //         language: 'es',
-  //       })
-  //       .then(res => {
-  //         var word = res['outputs'][0]['data']['concepts'][0]['name']
+      
 
-  //         var image = res['outputs'][0]['input']['data']['image']['url']
+      app.models
+        .predict(Clarifai.GENERAL_MODEL, urls[i], {
+          language: language,
+        })
+        .then(res => {
+          var word = res['outputs'][0]['data']['concepts'][0]['name']
 
-  //         var currentComb = {}
-  //         currentComb.image = image
-  //         currentComb.word = word
-  //         // console.log(currentComb)
-  //         result.push(currentComb)
-  //       })
-  //   }
-  //   // this.setState({ data: result })
+          var image = res['outputs'][0]['input']['data']['image']['url']
 
-  //   this.props.sendData(result)
+          var currentComb = {}
+          currentComb.image = image
+          currentComb.word = word
+          // console.log(currentComb)
+          result.push(currentComb)
+        })
+    }
+    // this.setState({ data: result })
 
-  //   // console.log(result)
-  // }
+    this.props.sendData(result)
 
-  // getInstagramToken() {
-  //   console.log('clicked me')
-  //   window.location.replace(url)
-  // }
+    // console.log(result)
+  }
 
-  // componentDidMount() {
-  //   const hash = window.location.hash
-  //   DERIVED_ACCESS_TOKEN = hash.split('=')[1]
-  //   console.log(window.location.hash)
-  //   console.log(DERIVED_ACCESS_TOKEN)
-  //   const instagram = new Instagram({
-  //     clientId: Constants.CLIENT_ID,
-  //     clientSecret: Constants.CLIENT_SECRET,
-  //     // accessToken: Constants.ACCESS_TOKEN
-  //     // accessToken: '1548230773.897a6d6.84310eb08ac0407387e80775b1b07e9d'
-  //     accessToken: DERIVED_ACCESS_TOKEN,
-  //   })
-  //   instagram.get('users/self/media/recent', (err, data) => {
-  //     if (err) {
-  //       // an error occured
-  //       console.log(err)
-  //     } else {
-  //       let userImagesArray = []
-  //       const imageLimit = 19
-  //       for (let i = 0; i < imageLimit; i++) {
-  //         let currentImage =
-  //           data['data'][i]['images']['standard_resolution']['url']
-  //         userImagesArray.push(currentImage)
-  //         // this.getClarifaiData(currentImage);
-  //       }
-  //       this.getClarifaiData(userImagesArray).bind(this)
-  //       // console.log(userImagesArray);
-  //     }
-  //   })
-  // }
+  getInstagramToken() {
+    console.log('clicked me')
+    window.location.replace(url)
+  }
+
+  componentDidMount() {
+    const hash = window.location.hash
+    DERIVED_ACCESS_TOKEN = hash.split('=')[1]
+   // console.log(window.location.hash)
+    console.log(DERIVED_ACCESS_TOKEN)
+    const instagram = new Instagram({
+     // clientId: Constants.CLIENT_ID,
+     // clientSecret: Constants.CLIENT_SECRET,
+      clientId: this.props.data.site.siteMetadata.client_id,
+      clientSecret: this.props.data.site.siteMetadata.client_secret,
+      // accessToken: Constants.ACCESS_TOKEN
+      // accessToken: '1548230773.897a6d6.84310eb08ac0407387e80775b1b07e9d'
+      accessToken: DERIVED_ACCESS_TOKEN,
+    })
+    instagram.get('users/self/media/recent', (err, data) => {
+      if (err) {
+        // an error occured
+        console.log(err)
+      } else {
+        let userImagesArray = []
+        const imageLimit = 19
+        for (let i = 0; i < imageLimit; i++) {
+          let currentImage =
+            data['data'][i]['images']['standard_resolution']['url']
+            console.log(currentImage)
+          userImagesArray.push(currentImage)
+          // this.getClarifaiData(currentImage);
+        }
+        this.getClarifaiData(userImagesArray).bind(this)
+        // console.log(userImagesArray);
+      }
+    })
+  }
 
   render() {
     return (
@@ -110,7 +130,7 @@ export default class ClarifaiData extends React.Component {
             {/* <button onClick={this.getClarifaiData}>Get Clarifai Data</button> */}
             {/* <br /> */}
             {/* <a href={url}>Get Instragram </a> */}
-            <Button onClick={this.props.handleLogin}>Let's go!</Button>
+            <Button onClick={this.getInstagramToken}>Let's go!</Button>
           </Row>
         </Container>
       </Wrapper>
