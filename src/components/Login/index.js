@@ -10,7 +10,7 @@ const app = new Clarifai.App({
 
 let DERIVED_ACCESS_TOKEN = ''
 
-const REDIRECT_URI = 'http://localhost:8000'
+const REDIRECT_URI = process.env.GATSBY_REDIRECT_URL
 const url = `https://api.instagram.com/oauth/authorize/?client_id=${
   process.env.GATSBY_CLIENT_ID
 }&redirect_uri=${REDIRECT_URI}&response_type=token`
