@@ -5,7 +5,7 @@ import Clarifai from 'clarifai'
 import Instagram from 'node-instagram'
 
 const app = new Clarifai.App({
-  apiKey: 'd63bab0d77c248f1bcb5304ff8d86cf4',
+  apiKey: process.env.GATSBY_CLARIFY_KEY,
 })
 
 let DERIVED_ACCESS_TOKEN = ''
@@ -71,7 +71,7 @@ export default class ClarifaiData extends React.Component {
     instagram.get('users/self/media/recent', (err, data) => {
       if (err) {
         // an error occured
-        // console.log(err)
+        console.log(err)
       } else {
         let userImagesArray = []
         const imageLimit = 19
@@ -160,7 +160,6 @@ const SubTitle = styled.h2`
 `
 
 const Button = styled.button`
-  height: 100%;
   padding: 0.5em 1em;
   border-radius: 3px;
   background: linear-gradient(
