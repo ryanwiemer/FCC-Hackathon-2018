@@ -1,22 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
-
 import Clarifai from 'clarifai'
 import Instagram from 'node-instagram'
-import { graphql } from 'gatsby'
-
-export const query = graphql`
-  query PageQuery {
-    site {
-      siteMetadata {
-        title
-        client_id
-        client_secret
-      }
-    }
-  }
-  `
 
 const app = new Clarifai.App({
   apiKey: 'd63bab0d77c248f1bcb5304ff8d86cf4',
@@ -24,14 +10,10 @@ const app = new Clarifai.App({
 
 let DERIVED_ACCESS_TOKEN = ''
 
-console.log(this.props.data);
-
 const REDIRECT_URI = 'http://localhost:8000'
 const url = `https://api.instagram.com/oauth/authorize/?client_id=${
-  this.props.data.site.siteMetadata.client_id
+  process.env.GATSBY_CLIENT_ID
 }&redirect_uri=${REDIRECT_URI}&response_type=token`
-
-
 
 export default class ClarifaiData extends React.Component {
   constructor() {
@@ -42,13 +24,14 @@ export default class ClarifaiData extends React.Component {
   getClarifaiData(urls) {
     // console.log(urls);
     var result = []
-    const language = localStorage.getItem('language') !== null ? localStorage.getItem('language') : 'en'
+    const language =
+      localStorage.getItem('language') !== null
+        ? localStorage.getItem('language')
+        : 'en'
 
     for (var i = 0; i < urls.length; i++) {
       // var currentComb = {};
       // currentComb.url = urls[i];
-
-      
 
       app.models
         .predict(Clarifai.GENERAL_MODEL, urls[i], {
@@ -62,57 +45,50 @@ export default class ClarifaiData extends React.Component {
           var currentComb = {}
           currentComb.image = image
           currentComb.word = word
-          // console.log(currentComb)
           result.push(currentComb)
         })
     }
     // this.setState({ data: result })
 
-    this.props.sendData(result)
+    // this.props.sendData(result)
 
     // console.log(result)
   }
 
   getInstagramToken() {
-    console.log('clicked me')
     window.location.replace(url)
   }
 
   componentDidMount() {
     const hash = window.location.hash
     DERIVED_ACCESS_TOKEN = hash.split('=')[1]
-   // console.log(window.location.hash)
-    console.log(DERIVED_ACCESS_TOKEN)
+    // console.log(DERIVED_ACCESS_TOKEN)
     const instagram = new Instagram({
-     // clientId: Constants.CLIENT_ID,
-     // clientSecret: Constants.CLIENT_SECRET,
-      clientId: this.props.data.site.siteMetadata.client_id,
-      clientSecret: this.props.data.site.siteMetadata.client_secret,
-      // accessToken: Constants.ACCESS_TOKEN
-      // accessToken: '1548230773.897a6d6.84310eb08ac0407387e80775b1b07e9d'
+      clientId: process.env.GATSBY_CLIENT_ID,
+      clientSecret: process.env.GATSBY_CLIENT_SECRET,
       accessToken: DERIVED_ACCESS_TOKEN,
     })
     instagram.get('users/self/media/recent', (err, data) => {
       if (err) {
         // an error occured
-        console.log(err)
+        // console.log(err)
       } else {
         let userImagesArray = []
         const imageLimit = 19
         for (let i = 0; i < imageLimit; i++) {
           let currentImage =
             data['data'][i]['images']['standard_resolution']['url']
-            console.log(currentImage)
+          // console.log(currentImage)
           userImagesArray.push(currentImage)
           // this.getClarifaiData(currentImage);
         }
         this.getClarifaiData(userImagesArray).bind(this)
-        // console.log(userImagesArray);
       }
     })
   }
 
   render() {
+    console.log(url)
     return (
       <Wrapper>
         <Title>youlingual</Title>
@@ -177,7 +153,6 @@ const SubTitle = styled.h2`
   text-align: center;
   margin: 0 0 2rem 0;
 `
-
 
 const Button = styled.button`
   padding: 0.5em 1em;

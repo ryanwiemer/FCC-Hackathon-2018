@@ -1,13 +1,4 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
-});
-
 module.exports = {
-  siteMetadata: {
-    title: 'Gatsby Default Starter',
-    client_id: process.env.CLIENT_ID,
-    client_secret: process.env.CLIENT_SECRET
-  },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
