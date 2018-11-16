@@ -10,10 +10,10 @@ const app = new Clarifai.App({
 
 let DERIVED_ACCESS_TOKEN = ''
 
-const REDIRECT_URI = process.env.GATSBY_REDIRECT_URL
+const REDIRECT_URL = process.env.GATSBY_REDIRECT_URL
 const url = `https://api.instagram.com/oauth/authorize/?client_id=${
-  process.env.GATSBY_CLIENT_ID
-}&redirect_uri=${REDIRECT_URI}&response_type=token`
+  process.env.GATSBY_INSTAGRAM_ID
+}&redirect_uri=${REDIRECT_URL}&response_type=token`
 
 export default class ClarifaiData extends React.Component {
   constructor() {
@@ -64,8 +64,8 @@ export default class ClarifaiData extends React.Component {
     DERIVED_ACCESS_TOKEN = hash.split('=')[1]
     // console.log(DERIVED_ACCESS_TOKEN)
     const instagram = new Instagram({
-      clientId: process.env.GATSBY_CLIENT_ID,
-      clientSecret: process.env.GATSBY_CLIENT_SECRET,
+      clientId: process.env.GATSBY_INSTAGRAM_ID,
+      clientSecret: process.env.GATSBY_INSTAGRAM_SECRET,
       accessToken: DERIVED_ACCESS_TOKEN,
     })
     instagram.get('users/self/media/recent', (err, data) => {
