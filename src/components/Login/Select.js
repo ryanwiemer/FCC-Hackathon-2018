@@ -11,28 +11,20 @@ const LanguageSelect = styled.select`
   padding: 0.25em 4em 0.25em 0.5em;
   color: ${props => props.theme.colors.primary};
   cursor: pointer;
-  margin: 0 1rem 0 0;
+  margin: 0 auto;
+  height: 100%;
 `
 
-export default class extends React.Component {
-
-  componentDidMount() {
-    // localStorage.setItem('language', 'ar'); // default language
-  }
-
-  saveLanguage(event) {
-    localStorage.setItem('language', event.target.value);
-  }
-
-  render() {
-    return (
-      <LanguageSelect onChange={this.saveLanguage}>
-        {this.props.languages.map((language, index) => (
-          <option key={index} value={language.code}>
-            {language.title}
-          </option>
-        ))}
-      </LanguageSelect>
-    )
-  }
+const Select = props => {
+  return (
+    <LanguageSelect value={props.currentLanguage} onChange={props.handleChange}>
+      {props.languages.map((language, index) => (
+        <option key={index} value={language.code}>
+          {language.title}
+        </option>
+      ))}
+    </LanguageSelect>
+  )
 }
+
+export default Select

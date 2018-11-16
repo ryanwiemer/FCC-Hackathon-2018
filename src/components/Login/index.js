@@ -91,22 +91,23 @@ export default class ClarifaiData extends React.Component {
     console.log(url)
     return (
       <Wrapper>
-        <Title>youlingual</Title>
         <Container>
+          <Title>youlingual</Title>
           <SubTitle>I want to learn</SubTitle>
           <Row>
             <Select
               languages={this.props.languages}
+              currentLanguage={this.props.currentLanguage}
               handleChange={this.props.handleChange}
             />
           </Row>
           <Row>
-            {/* <Button handleSubmit={this.props.handleSubmit} /> */}
-            {/* <button onClick={this.getInstagramData}>Get Instagram Data</button> */}
-            {/* <button onClick={this.getClarifaiData}>Get Clarifai Data</button> */}
-            {/* <br /> */}
-            {/* <a href={url}>Get Instragram </a> */}
-            <Button onClick={this.getInstagramToken}>Let's go!</Button>
+            <Button
+              onClick={this.getInstagramToken}
+              handleLogin={this.props.handleLogin}
+            >
+              {this.props.buttonMessage}
+            </Button>
           </Row>
         </Container>
       </Wrapper>
@@ -124,28 +125,32 @@ const Wrapper = styled.div`
 `
 
 const Container = styled.div`
-  display: flex;
-  flex-flow: column;
   width: 100%;
   max-width: 500px;
   border-radius: 3px;
-  padding: 2em;
+  padding: 2em 2em 0 2em;
   margin: 0 auto;
+  text-align: center;
+  @media screen and (min-height: 500px) {
+    padding: 4em 2em 0 2em;
+  }
 `
 
 const Row = styled.div`
-  display: flex;
-  justify-content: center;
   margin: 0 0 2rem 0;
 `
 
 const Title = styled.h1`
-  position: absolute;
-  top: 2rem;
   font-size: 3em;
   font-weight: bold;
   text-align: center;
   margin: 0 0 2rem 0;
+  @media screen and (min-height: 500px) {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    width: 100%;
+  }
 `
 
 const SubTitle = styled.h2`
@@ -155,6 +160,7 @@ const SubTitle = styled.h2`
 `
 
 const Button = styled.button`
+  height: 100%;
   padding: 0.5em 1em;
   border-radius: 3px;
   background: linear-gradient(
