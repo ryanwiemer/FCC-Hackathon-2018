@@ -5,7 +5,7 @@ import Clarifai from 'clarifai'
 import Instagram from 'node-instagram'
 
 const app = new Clarifai.App({
-  apiKey: process.env.GATSBY_CLARIFAI_KEY,
+  apiKey: `${process.env.GATSBY_CLARIFAI_KEY}`,
 })
 
 let DERIVED_ACCESS_TOKEN = ''
