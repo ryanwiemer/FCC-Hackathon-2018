@@ -127,7 +127,7 @@ class IndexPage extends React.Component {
           message: `我們走吧！`,
         },
       ],
-      currentLanguage: '',
+      currentLanguage: 'en',
       buttonMessage: '',
       currentPage: 'login',
       finalScore: null,

@@ -16,7 +16,7 @@ const LanguageSelect = styled.select`
 
 const Select = props => {
   return (
-    <LanguageSelect onChange={props.handleChange}>
+    <LanguageSelect value={props.currentLanguage} onChange={props.handleChange}>
       {props.languages.map((language, index) => (
         <option key={index} value={language.code}>
           {language.title}

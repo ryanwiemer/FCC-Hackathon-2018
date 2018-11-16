@@ -102,6 +102,7 @@ export default class ClarifaiData extends React.Component {
           <Row>
             <Select
               languages={this.props.languages}
+              currentLanguage={this.props.currentLanguage}
               handleChange={this.props.handleChange}
             />
           </Row>
