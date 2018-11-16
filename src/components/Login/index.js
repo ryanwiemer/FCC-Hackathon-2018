@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
+import Button from './Button'
 
 // import Clarifai from 'clarifai'
 // import Instagram from 'node-instagram'
@@ -105,12 +106,10 @@ export default class ClarifaiData extends React.Component {
             />
           </Row>
           <Row>
-            {/* <Button handleSubmit={this.props.handleSubmit} /> */}
-            {/* <button onClick={this.getInstagramData}>Get Instagram Data</button> */}
-            {/* <button onClick={this.getClarifaiData}>Get Clarifai Data</button> */}
-            {/* <br /> */}
-            {/* <a href={url}>Get Instragram </a> */}
-            <Button onClick={this.props.handleLogin}>Let's go!</Button>
+            <Button
+              buttonMessage={this.props.buttonMessage}
+              handleLogin={this.props.handleLogin}
+            />
           </Row>
         </Container>
       </Wrapper>
@@ -156,18 +155,4 @@ const SubTitle = styled.h2`
   font-size: 1em;
   text-align: center;
   margin: 0 0 2rem 0;
-`
-
-
-const Button = styled.button`
-  padding: 0.5em 1em;
-  border-radius: 3px;
-  background: linear-gradient(
-    135deg,
-    rgba(203, 86, 245, 1) 0%,
-    rgba(252, 222, 51, 1) 100%
-  );
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
 `

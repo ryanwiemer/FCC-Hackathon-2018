@@ -14,25 +14,39 @@ class IndexPage extends React.Component {
         {
           title: 'English',
           code: 'en',
+          message: `Let's Go!`,
         },
         {
           title: 'Spanish',
           code: 'es',
+          message: `¡Vamos!`,
         },
         {
           title: 'French',
           code: 'fr',
+          message: `Allons-y!`,
         },
       ],
       currentLanguage: '',
+      buttonMessage: '',
       currentPage: 'login',
       finalScore: null,
     }
   }
 
   handleChange = event => {
+    // change the current language based on the user's selection
     this.setState({
       currentLanguage: event.target.value,
+    })
+
+    // change the Login Button's text based on the language selected
+    this.state.languages.map((language) => {
+      if (language.code == event.target.value) {
+        this.setState({
+          buttonMessage: language.message
+        })
+      }
     })
   }
 
@@ -77,6 +91,7 @@ class IndexPage extends React.Component {
               handleSubmit={this.handleSubmit}
               sendData={this.receiveData}
               currentLanguage={this.state.currentLanguage}
+              buttonMessage={this.state.buttonMessage}
             />
             {/* <API sendData={this.receiveData} /> */}
           </div>
